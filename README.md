@@ -81,9 +81,3 @@ A system is never perfect and there is always room for improvement. Here are som
 
 * If you have any query or doubt, please, feel free to contact me by e-mail.
 
-<<<<<<< HEAD
-This application was created to make possible hotel bookings.
-
-## 
-=======
->>>>>>> 276e170c5e6894136b564fc47b6acce24ff5b3f1
