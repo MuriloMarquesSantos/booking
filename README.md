@@ -4,7 +4,6 @@
 - [Technologies](#techs)
 - [Requirements](#reqs)
 - [Architecture](#architecture)
-- [Directories](#directories)
 - [Local Configuration](#localconfig)
 - [Testing](#testing)
 - [Postman Doc](#postman)
