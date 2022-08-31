@@ -5,6 +5,8 @@ import com.alten.booking.entities.Booking;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 
 public class MapperUtils {
@@ -13,8 +15,10 @@ public class MapperUtils {
     Long bookingLength = createBookingDTO.getBookingLength();
     return Booking
         .builder()
-        .startBookingDate(LocalDateTime.of(createBookingDTO.getStartBookingDate(), LocalTime.MIDNIGHT))
-        .endBookingDate(LocalDateTime.of(createBookingDTO.getStartBookingDate().plus(bookingLength, ChronoUnit.DAYS), LocalTime.MIDNIGHT))
+        .startBookingDate(LocalDateTime.of(createBookingDTO.getStartBookingDate(), LocalTime.MIDNIGHT).atZone(
+                ZoneOffset.UTC))
+        .endBookingDate(LocalDateTime.of(createBookingDTO.getStartBookingDate().plus(bookingLength, ChronoUnit.DAYS), LocalTime.MIDNIGHT)
+            .atZone(ZoneOffset.UTC))
         .bookingLength(bookingLength.toString())
         .build();
   }

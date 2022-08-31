@@ -13,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 
@@ -37,10 +39,10 @@ public class BookingServiceTest {
 
   @Test
   void successBookingGivenStartsTomorrowAndLength3() {
-    when(bookingRepository.findByStartBookingDateBetween(any(), any()))
+    when(bookingRepository.findCustomDate(any(), any()))
         .thenReturn(Collections.emptyList());
 
-    LocalDateTime now = LocalDateTime.now().plus(1, ChronoUnit.DAYS);
+    ZonedDateTime now = LocalDateTime.now().plus(1, ChronoUnit.DAYS).atZone(ZoneOffset.UTC);
 
     Booking booking = Booking
         .builder()
@@ -98,11 +100,11 @@ public class BookingServiceTest {
         .builder()
         .bookingId("123")
         .bookingLength("3")
-        .startBookingDate(now)
-        .endBookingDate(now.plus(3, ChronoUnit.DAYS))
+        .startBookingDate(now.atZone(ZoneOffset.UTC))
+        .endBookingDate(now.plus(3, ChronoUnit.DAYS).atZone(ZoneOffset.UTC))
         .build();
 
-    when(bookingRepository.findByStartBookingDateBetween(any(), any()))
+    when(bookingRepository.findCustomDate(any(), any()))
         .thenReturn(Collections.singletonList(booking));
 
     BookingDTO bookingDTO = BookingDTO
@@ -116,7 +118,7 @@ public class BookingServiceTest {
 
   @Test
   void successCheckAvailabilityWhenThereIsNoBooking() {
-    when(bookingRepository.findByStartBookingDateBetween(any(), any()))
+    when(bookingRepository.findCustomDate(any(), any()))
         .thenReturn(Collections.emptyList());
 
     LocalDate now = LocalDate.now().plus(1, ChronoUnit.DAYS);
@@ -133,11 +135,11 @@ public class BookingServiceTest {
         .builder()
         .bookingId("123")
         .bookingLength("3")
-        .startBookingDate(LocalDateTime.now())
-        .endBookingDate(LocalDateTime.now().plus(3, ChronoUnit.DAYS))
+        .startBookingDate(LocalDateTime.now().atZone(ZoneOffset.UTC))
+        .endBookingDate(LocalDateTime.now().plus(3, ChronoUnit.DAYS).atZone(ZoneOffset.UTC))
         .build();
 
-    when(bookingRepository.findByStartBookingDateBetween(any(), any()))
+    when(bookingRepository.findCustomDate(any(), any()))
         .thenReturn(Collections.singletonList(booking));
 
     LocalDate now = LocalDate.now().plus(1, ChronoUnit.DAYS);

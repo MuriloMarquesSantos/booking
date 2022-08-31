@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class BookingService {
 
   public AvailabilityDTO checkRoomAvailability(LocalDate from, LocalDate to, String bookingId) {
     List<Booking> bookings = bookingRepository
-        .findByStartBookingDateBetween(LocalDateTime.of(from, LocalTime.MIDNIGHT), LocalDateTime.of(to, LocalTime.MIDNIGHT));
+        .findCustomDate(from.atStartOfDay(ZoneOffset.UTC), to.atStartOfDay(ZoneOffset.UTC));
 
     if (bookings.isEmpty() || bookings.get(0).getBookingId().equals(bookingId)) {
       return new AvailabilityDTO(BOOKING_AVAILABLE_MESSAGE);

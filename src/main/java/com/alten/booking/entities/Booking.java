@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Data
 @AllArgsConstructor
@@ -20,8 +21,8 @@ public class Booking {
   @Id
   private String bookingId;
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private LocalDateTime startBookingDate;
+  private ZonedDateTime startBookingDate;
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private LocalDateTime endBookingDate;
+  private ZonedDateTime endBookingDate;
   private String bookingLength;
 }
