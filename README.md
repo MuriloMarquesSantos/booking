@@ -44,13 +44,14 @@ This system was created to make hotel rooms booking easier.
 
 - On the project's **application.yml** you will notice that I'm using a sample user username: myUserAdmin password: abc123. You can create this same one and give it access to the database, or you can change it with your own user.
 
-- if you choose to create a new user you can do it like that on the mongo console: ```db.createUser(
+- if you choose to create a new user you can do it like that on the mongo console: 
+db.createUser(
   {
     user: "root",
     pwd: "root",
     roles: [ { role: "readWrite", db: "booking" } ]
   }
-);```
+);
 
 - By default application will be started at port 8080, but you can change it in application.yml file.
 ```
