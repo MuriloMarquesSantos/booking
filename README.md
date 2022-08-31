@@ -37,7 +37,7 @@ This system was created to make hotel rooms booking easier.
 <a id="localconfig"></a>
 
 ## Local Configuration
-```
+
 - Please notice that you have to have **mongo** installed upfront. If you use mac I suggest using homebrew for the installation.
 
 - You can find more information on this link to install it depending on your operational system (https://www.mongodb.com/docs/manual/administration/install-community/) 
