@@ -34,10 +34,11 @@ This system was created to make hotel rooms booking easier.
 - Given the possibility of having aggressive flow inside the **booking** api, I decided to use **MongoDB**, mainly due to its ease to scale horizontaly really quickly, if needed. We also don't have many complex relationships between different entities, making the use of **NoSQL** even better.
 
 
-```
-<a id="localconfig"></a>
-## Local Configuration
 
+<a id="localconfig"></a>
+
+## Local Configuration
+```
 - Please notice that you have to have **mongo** installed upfront. If you use mac I suggest using homebrew for the installation.
 
 - You can find more information on this link to install it depending on your operational system (https://www.mongodb.com/docs/manual/administration/install-community/) 
